@@ -1,0 +1,10 @@
+[package]
+name = "value_from_type_traits"
+version = "1.0.2"
+authors = ["Bert Proesmans <bproesmans@hotmail.com>"]
+description = "Traits accompanying the value_from_type_macros crate"
+license = "MIT"
+documentation = "https://docs.rs/value_from_type_traits"
+repository = "https://github.com/Bert-Proesmans/value-from-type-derive"
+
+[dependencies]
