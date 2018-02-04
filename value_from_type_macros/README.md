@@ -30,8 +30,10 @@ mod temp {
 
     #[derive(Debug)]
     pub struct X(); 
- 
+}
+
 // Explicit import for sake of example.
+// Notice: EnumName::X IS the enum variant corresponding to the struct temp::X!
 use self::temp::{EnumName, X};
 // use self::temp::*;
 
