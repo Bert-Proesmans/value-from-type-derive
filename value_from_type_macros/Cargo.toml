@@ -11,7 +11,7 @@ repository = "https://github.com/Bert-Proesmans/value-from-type-derive"
 proc-macro = true
 
 [dependencies]
-syn = {version = "0.12", features = ['full'] }
+syn = {version = "0.12", features = ['full', 'extra-traits'] }
 quote = "0.4"
 proc-macro2 = { version = "0.2", features = ["nightly"] }
 # Easy case conversion
