@@ -12,6 +12,9 @@ pub fn value_from_type_impl(
     args: proc_macro::TokenStream,
     input: proc_macro::TokenStream,
 ) -> Result<proc_macro::TokenStream, proc_macro::Diagnostic> {
+
+    println!("DBG INPUT\n{:?}", input.to_string());
+
     // Parse macro arguments.
     let args: AttrArgs = syn::parse2(args.into()).map_err(|e| {
         let msg = format!("Failed parsing arguments: {:}", e);
@@ -61,6 +64,7 @@ pub fn value_from_type_impl(
     );
     let implementation_tokens = quote!{
         #[allow(non_upper_case_globals)]
+        #[doc(hidden)]
         const #impl_dummy: () = {
             extern crate value_from_type_traits as _vftt;
             #( #impl_data )*
