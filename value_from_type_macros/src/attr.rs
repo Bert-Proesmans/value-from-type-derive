@@ -12,9 +12,6 @@ pub fn value_from_type_impl(
     args: proc_macro::TokenStream,
     input: proc_macro::TokenStream,
 ) -> Result<proc_macro::TokenStream, proc_macro::Diagnostic> {
-
-    println!("DBG INPUT\n{:?}", input.to_string());
-
     // Parse macro arguments.
     let args: AttrArgs = syn::parse2(args.into()).map_err(|e| {
         let msg = format!("Failed parsing arguments: {:}", e);

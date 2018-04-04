@@ -83,10 +83,7 @@ pub fn value_from_type(
     println!("[BUILD] Running proc macro: value_from_type");
 
     match value_from_type_impl(args, input) {
-        Ok(v) => {
-            println!("DBG OUT {:}", v.clone().to_string());
-            v
-        },
+        Ok(v) => v,
         Err(e) => {
             e.emit();
             panic!("See emitted errors");
