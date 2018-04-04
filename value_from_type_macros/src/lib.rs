@@ -67,6 +67,19 @@ macro_rules! quote {
     }
 }
 
+/// Execute the provided statement if the runtime encountered debug modus.
+/// 
+/// Currently debug modus will activate when the `RUST_BACKTRACE` environment
+/// variable is set to `1` (String).
+macro_rules! debug {
+    ($($tt:tt)*) => {
+        match $crate::std::env::var("RUST_BACKTRACE") {
+            Ok(ref val) if val == "1" => { $($tt)* },
+            _ => {},
+        };
+    }
+}
+
 mod args;
 mod attr;
 mod common;
@@ -83,7 +96,10 @@ pub fn value_from_type(
     println!("[BUILD] Running proc macro: value_from_type");
 
     match value_from_type_impl(args, input) {
-        Ok(v) => v,
+        Ok(v) => {
+            debug!(println!("Outputted tokens\n{:}\n", v.clone().to_string()));
+            v
+        },
         Err(e) => {
             e.emit();
             panic!("See emitted errors");
