@@ -88,6 +88,7 @@ where
         Ident::from("Copy"),
         Ident::from("PartialEq"),
         Ident::from("Eq"),
+        Ident::from("Hash"),
     ];
     //
     let enum_tokens = quote!{
