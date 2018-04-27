@@ -2,4 +2,5 @@
 members = [
 	"value_from_type_macros",
 	"value_from_type_traits",
+	"value_from_type_tests",
 ]

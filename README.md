@@ -10,7 +10,13 @@ This repository contains two Rust crates. Both crates must be used as dependancy
 
 # Building
 
-*ANY CRATE* depending on this macro must pass the flag `procmacro2_semver_exempt` to rustc.
+- Make sure to use the Nightly compiler. The features that must be enabled are `proc_macro` and `proc_macro_mod`.
+Add this to your crate's entry file 
+```rust 
+#![feature(proc_macro, proc_macro_mod)]
+```
+
+- *ANY CRATE* depending on this macro must pass the flag `procmacro2_semver_exempt` to rustc.
 When building with Cargo it's possible to create a small configuration file that automatically
 passes this flag for you.  
 This configuration file must contain this

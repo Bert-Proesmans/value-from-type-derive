@@ -8,6 +8,9 @@ use syn::{self, Ident, Item, ItemConst, ItemEnum, ItemImpl, ItemMod, ItemStruct,
 use args::AttrArgs;
 use common::{build_invariants, filter_structs, push_into_module};
 
+// Macro imports
+use super::quote;
+
 pub fn value_from_type_impl(
     args: proc_macro::TokenStream,
     input: proc_macro::TokenStream,

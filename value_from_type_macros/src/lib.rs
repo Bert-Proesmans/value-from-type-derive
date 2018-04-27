@@ -9,7 +9,7 @@
 //! # Examples
 //!
 //! ```
-//! # #![feature(proc_macro)]
+//! # #![feature(proc_macro, proc_macro_mod)]
 //! # extern crate value_from_type_macros;
 //! # extern crate value_from_type_traits;
 //! // Attribute macro must be imported through a use statement.
@@ -36,7 +36,7 @@
 //!
 
 #![doc(html_root_url = "https://docs.rs/value_from_type_macros")]
-#![feature(proc_macro)]
+#![feature(proc_macro, proc_macro_path_invoc)]
 
 extern crate proc_macro;
 extern crate proc_macro2;
@@ -59,11 +59,9 @@ extern crate heck;
 // The difference between both sites is important because it constraints the operations
 // you can perform. See 'https://github.com/rust-lang/rust/issues/45934' for precise
 // details.
-//
-// NOTE: The macro MUST be defined before the modules!
 macro_rules! quote {
     ($($tt:tt)*) => {
-        quote_spanned!($crate::proc_macro2::Span::call_site()=> $($tt)*)
+        $crate::quote::quote_spanned!($crate::proc_macro2::Span::call_site()=> $($tt)*)
     }
 }
 
@@ -94,6 +92,7 @@ pub fn value_from_type(
     input: proc_macro::TokenStream,
 ) -> proc_macro::TokenStream {
     println!("[BUILD] Running proc macro: value_from_type");
+
 
     match value_from_type_impl(args, input) {
         Ok(v) => {

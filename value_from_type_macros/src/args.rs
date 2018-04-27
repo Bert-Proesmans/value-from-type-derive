@@ -9,8 +9,8 @@ pub struct AttrArgs {
 
 impl Synom for AttrArgs {
     named!(parse -> Self, map!(
-		parens!(Punctuated::<Ident, Token![,]>::parse_terminated_nonempty),
-		|(_parens, args)| AttrArgs {
+		Punctuated::<Ident, Token![,]>::parse_terminated_nonempty,
+		|args| AttrArgs {
 			args: args.into_iter().collect(),
 		}
 	));

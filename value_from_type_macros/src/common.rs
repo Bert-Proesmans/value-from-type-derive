@@ -4,6 +4,9 @@ use proc_macro2::{self, Span};
 use syn::spanned::Spanned;
 use syn::{self, Ident, Item, ItemMod, ItemStruct, Variant};
 
+// Macro imports
+use super::quote;
+
 /// Select all ItemStructs from the provided ItemMod AST.
 #[allow(dead_code)]
 pub fn filter_structs_mut<'a>(data: &'a mut ItemMod) -> impl Iterator<Item = &'a mut ItemStruct> {

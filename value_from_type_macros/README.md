@@ -14,30 +14,4 @@ for each struct (within the module) as generic argument.
 
 # Examples
  
-```rust
-#![feature(proc_macro)]
-extern crate value_from_type_macros;
-extern crate value_from_type_traits;
-
-// Attribute macro must be imported through a use statement.
-use value_from_type_macros::value_from_type;
-// Implemented trait on `EnumName`
-use value_from_type_traits::IntoEnum;
-
-mod temp {
-    // The parameter indicates the enum identifier.
-    #![value_from_type(EnumName)]
-
-    #[derive(Debug)]
-    pub struct X(); 
-}
-
-// Explicit import for sake of example.
-// Notice: EnumName::X IS the enum variant corresponding to the struct temp::X!
-use self::temp::{EnumName, X};
-// use self::temp::*;
-
-fn main() {
-	assert_eq!(EnumName::X, X::into_enum()); 
-}
-```
+See the documentation or [value_from_type_macros/src/lib.rs] for usage example(s).

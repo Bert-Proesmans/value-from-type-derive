@@ -1,0 +1,10 @@
+[package]
+name = "value_from_type_tests"
+version = "0.1.0"
+authors = ["Bert Proesmans <bproesmans@hotmail.com>"]
+
+[dependencies]
+
+[dev-dependencies]
+value_from_type_traits = {path = "../value_from_type_traits"}
+value_from_type_macros = {path = "../value_from_type_macros"}
